@@ -1,0 +1,700 @@
+
+/* src/pages/Home.css */ 
+/* src/index.css OR src/App.css */ 
+/* --- Global Reset and Centering --- */ 
+body { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: sans-serif; 
+    background-color: #f0f8ff; /* Sets the light blue background for the whole page */ 
+    display: flex; 
+    justify-content: center; /* This is key: it centers its direct child (#root) */ 
+} 
+
+#root { 
+    width: 100%; 
+    max-width: 1400px; /* You can adjust this, it's the max width of your entire app */ 
+    background-color: #fff; /* Give the main app area a white background */ 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); 
+} 
+
+/* --- Overall Home Section Styling --- */ 
+.home { 
+    display: flex; 
+    flex-direction: column; /* Stack content vertically */ 
+    justify-content: center; 
+    align-items: center; /* Center content horizontally */ 
+    width: 100%; 
+    margin: 0 auto; 
+    max-width: 1200px; 
+    min-height: 100vh; /* Adjust based on your navbar height */ 
+    padding: 40px 20px; /* Top/bottom padding, and generous left/right padding */ 
+    box-sizing: border-box; /* Include padding in element's total width/height */ 
+    background-color: #f0f8ff; /* Light blue background as in your design */ 
+    gap: 25px; /* Space between major sections like hero, roadmap, features */ 
+    position: relative; 
+    overflow: hidden; 
+} 
+
+/* Animated Background Elements */
+.home::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Navbar Adjustments (if needed) --- */ 
+.navbar { 
+    background-color: #fff; /* White background for navbar */ 
+    padding: 15px 20px; /* Match horizontal padding of home section */ 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Optional subtle shadow */ 
+} 
+
+.navbar .nav-links { 
+    display: flex; 
+    gap: 30px; 
+} 
+
+.navbar .auth-buttons { 
+    display: flex; 
+    gap: 10px; 
+} 
+
+.navbar .logo-name { 
+    display: flex; 
+    align-items: center; 
+    font-weight: bold; 
+    font-size: 1.2rem; 
+    color: #333; 
+} 
+
+.navbar .logo-name img { 
+    height: 30px; /* Adjust logo size */ 
+    margin-right: 8px; 
+} 
+
+.navbar a { 
+    text-decoration: none; 
+    color: #555; 
+    font-weight: 500; 
+    transition: color 0.3s ease; 
+} 
+
+.navbar a:hover { 
+    color: #007bff; /* Example hover color */ 
+} 
+
+.navbar button { 
+    padding: 8px 18px; 
+    border-radius: 5px; 
+    border: none; 
+    cursor: pointer; 
+    font-weight: 600; 
+} 
+
+.navbar .login-btn { 
+    background-color: transparent; 
+    color: #007bff; 
+    border: 1px solid #007bff; 
+} 
+
+.navbar .signup-btn { 
+    background-color: #007bff; 
+    color: white; 
+} 
+
+/* --- Hero Section Styling --- */ 
+.hero { 
+    display: flex; 
+    justify-content: center; /* Space between text and image */ 
+    align-items: center; 
+    width: 100%; /* Take full width of its parent (.home) */ 
+    max-width: 1000px; /* Limit hero content width */ 
+    text-align: left; /* Default text alignment */ 
+    margin-bottom: 40px; /* Space below hero section */
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    padding: 3rem;
+} 
+
+/* Hero shine effect */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.8s ease;
+}
+
+.hero:hover::before {
+    left: 100%;
+}
+
+.hero-content { 
+    flex: 1; /* Allow content to grow */ 
+    max-width: 100%; /* Adjust as needed */ 
+    margin-right: 40px; /* Space between text and image */ 
+    text-align: center;
+    animation: slideInLeft 1s ease-out;
+} 
+
+/* Animation keyframes */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1 { 
+    font-size: 3.2rem; /* Larger font size */ 
+    color: #333; 
+    margin-bottom: 20px; 
+    line-height: 1.2;
+    animation: fadeInUp 1s ease-out 0.3s both;
+} 
+
+.hero p { 
+    font-size: 1.1rem; 
+    color: #666; 
+    margin-bottom: 30px; 
+    line-height: 1.6;
+    animation: fadeInUp 1s ease-out 0.6s both;
+} 
+
+.hero-buttons { 
+    display: flex; 
+    justify-content: center; /* centers buttons horizontally */ 
+    gap: 15px;
+    animation: fadeInUp 1s ease-out 0.9s both;
+} 
+
+.hero-buttons .primary-btn { 
+    background-color: #ff7f50; /* Orange color for primary */ 
+    color: white; 
+    padding: 12px 25px; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 1rem; 
+    cursor: pointer; 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(255, 127, 80, 0.3);
+} 
+
+.hero-buttons .primary-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s;
+}
+
+.hero-buttons .primary-btn:hover::before {
+    left: 100%;
+}
+
+.hero-buttons .primary-btn:hover { 
+    background-color: #e66a3e;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(255, 127, 80, 0.4);
+} 
+
+.hero-buttons .secondary-btn { 
+    background-color: transparent; 
+    color: #ff7f50; 
+    padding: 12px 25px; 
+    border: 1px solid #ff7f50; 
+    border-radius: 5px; 
+    font-size: 1rem; 
+    cursor: pointer; 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+} 
+
+.hero-buttons .secondary-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #ff7f50;
+    transition: width 0.4s ease;
+    z-index: -1;
+}
+
+.hero-buttons .secondary-btn:hover::before {
+    width: 100%;
+}
+
+.hero-buttons .secondary-btn:hover { 
+    background-color: #ff7f50; 
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 127, 80, 0.3);
+} 
+
+.hero-illustration { 
+    flex-shrink: 0; /* Prevent image from shrinking */ 
+    width: 400px; /* Fixed width for illustration */ 
+    height: auto; 
+} 
+
+/* --- Roadmap Section Styling (NO HORIZONTAL LINE) --- */ 
+.roadmap { 
+    display: flex; 
+    justify-content: center; /* Center the roadmap items */ 
+    gap: 80px; /* Space between each roadmap step */ 
+    width: 100%; 
+    max-width: 1000px; /* Limit roadmap content width */ 
+    margin-bottom: 60px; 
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    position: relative;
+} 
+
+/* REMOVED: Horizontal line animation - no more .roadmap::before */
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(50px);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.roadmap-step { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+    animation: bounceIn 1s ease-out;
+    animation-fill-mode: both;
+} 
+
+.roadmap-step:nth-child(1) { animation-delay: 0.2s; }
+.roadmap-step:nth-child(3) { animation-delay: 0.4s; }
+.roadmap-step:nth-child(5) { animation-delay: 0.6s; }
+
+.roadmap-step:hover {
+    transform: scale(1.1) translateY(-5px);
+}
+
+.roadmap-step img { 
+    height: 120px; /* Adjust size of roadmap icons */ 
+    width: auto;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.15));
+    transition: all 0.3s ease;
+} 
+
+.roadmap-step:hover img {
+    transform: rotate(5deg) scale(1.1);
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.2));
+}
+
+.roadmap-step2 img { 
+    height: 80px; /* Adjust size of roadmap icons */ 
+    width: auto;
+    animation: pulse 2s infinite;
+} 
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+.roadmap-step span { 
+    font-size: 1.1rem; 
+    color: #444; 
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+} 
+
+/* --- Feature Cards Section Styling --- */ 
+.features { 
+    display: flex; 
+    justify-content: center; /* Center the cards */ 
+    gap: 30px; /* Space between cards */ 
+    width: 100%; 
+    max-width: 1000px; /* Limit feature cards content width */ 
+    margin-bottom: 60px; /* Space below features */ 
+} 
+
+.feature-card { 
+    background-color: #fff; 
+    padding: 30px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Stronger shadow for cards */ 
+    text-align: center; 
+    flex: 1; /* Allow cards to grow and shrink */ 
+    max-width: 320px; /* Max width for each card */ 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1s ease-out;
+    animation-fill-mode: both;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+} 
+
+.feature-card:nth-child(1) { animation-delay: 0.2s; }
+.feature-card:nth-child(2) { animation-delay: 0.4s; }
+.feature-card:nth-child(3) { animation-delay: 0.6s; }
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.05), rgba(102, 126, 234, 0.05));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+}
+
+.feature-card:hover { 
+    transform: translateY(-15px) scale(1.03); /* Subtle lift on hover */ 
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15); 
+} 
+
+.feature-card img { 
+    height: 130px; /* Larger icons for features */ 
+    width: auto; 
+    margin-bottom: 20px;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+} 
+
+.feature-card:hover img {
+    transform: scale(1.15) translateY(-10px);
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.25));
+}
+
+.feature-card h3 { 
+    font-size: 1.3rem; 
+    color: #333; 
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+} 
+
+.feature-card p { 
+    font-size: 1rem; 
+    color: #666; 
+    margin-bottom: 25px; 
+    line-height: 1.5;
+    position: relative;
+    z-index: 2;
+} 
+
+.feature-card button { 
+    background-color: #ff7f50; /* Orange color for card buttons */ 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 0.95rem; 
+    cursor: pointer; 
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 8px 20px rgba(255, 127, 80, 0.3);
+} 
+
+.feature-card button:hover { 
+    background-color: #e66a3e;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(255, 127, 80, 0.4);
+} 
+
+.hero-text { 
+    text-align: center; /* center heading & paragraph */ 
+} 
+
+.hero, .roadmap, .features { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: 100%; 
+} 
+
+/* Orange box for icons */ 
+/* Orange background box for card images */ 
+.feature-img { 
+    width: 100px; 
+    height: auto; 
+    margin: 0 auto 1rem; 
+    display: block; 
+    /* Subtle drop shadow */ 
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15)); 
+    transition: transform 0.25s ease, filter 0.25s ease; 
+} 
+
+.feature-img:hover { 
+    transform: scale(1.05); /* slight zoom effect */ 
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.25)); 
+} 
+
+html, body { 
+    width: 100%; 
+    overflow-x: hidden; 
+} 
+
+/* src/index.css OR src/App.css */ 
+/* --- Global Reset --- */ 
+* { 
+    box-sizing: border-box; 
+} 
+
+footer { 
+    text-align: center; 
+    padding: 20px; 
+    background-color: #f9f9f9; 
+    border-top: 1px solid #e5e7eb; 
+    font-size: 0.9rem; 
+    color: #777; 
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .roadmap {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .features {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+/* src/pages/Home.css */
+
+/* --- Testimonials Section (UPDATED) --- */
+.testimonials {
+  width: 100%;
+  text-align: center;
+  padding: 4rem 0; /* Use 0 for left/right padding to allow full-width scroll */
+  background: #f9fbff;
+  overflow: hidden; /* Hide the parts of the track that are off-screen */
+}
+
+.testimonial-title {
+  font-size: 2.5rem;
+  font-weight: 700; /* Adjusted for clarity */
+  color: #333;
+  margin-bottom: 3rem;
+}
+
+/* Updated highlight styles to match the image */
+.testimonial-title .highlight {
+  color: #349be5; /* Purple color */
+}
+
+.testimonial-title .highlight-green {
+  color: #ff7f50; /* Green color */
+}
+
+
+/* --- NEW Styles for Scrolling Animation --- */
+.testimonial-scroller {
+  max-width: 1200px; /* Adjust width as needed */
+  margin: 0 auto;
+  /* Creates a fade-out effect on the left and right edges */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.testimonial-track {
+  display: flex;
+  /* Animation: name, duration, timing-function, iteration-count */
+  animation: scroll 40s linear infinite;
+  width: fit-content; /* Let the track be as wide as its children */
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Move left by the width of the first half of the cards */
+    transform: translateX(-50%);
+  }
+}
+/* --- End of NEW Styles --- */
+
+
+/* MODIFIED Testimonial Card Styles */
+/* .testimonial-cards ruleset removed as it was empty */
+
+.testimonial-card {
+  width: 320px; /* Set a fixed width for each card */
+  flex-shrink: 0; /* Prevent cards from shrinking */
+  background: white;
+  padding: 2rem;
+  margin: 1rem; /* Replaces the 'gap' property */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.testimonial-track:hover {
+    animation-play-state: paused; /* Pause the scroll on hover */
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.quote-icon {
+  font-size: 2.5rem;
+  color: #ff7f50;
+  margin-bottom: 0.5rem;
+  font-family: serif;
+}
+
+.stars {
+  color: #facc15;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.author img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.author span {
+  font-size: 0.9rem;
+  color: #3778fb;
+}
+
+/* Happy Clients Counter Styles */
+.happy-clients {
+  margin-top: 3rem;
+  padding: 12px 24px;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.happy-clients .happy-clients-number {
+  font-weight: 900;
+  color: #ff7f50;
+  margin-right: 8px;
+}
